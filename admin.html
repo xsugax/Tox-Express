@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Operations Admin | ToxExpress</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ToxExpress Operations Admin — create and manage tracking codes, shipment weights, routing, and hold control.">
+<link rel="canonical" href="https://toxexpress.org/admin.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ToxExpress">
+<meta property="og:title" content="Operations Admin | ToxExpress">
+<meta property="og:description" content="Create tracking codes, assign shipment weights, and control hold status from one integrated command console.">
+<meta property="og:url" content="https://toxexpress.org/admin.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Operations Admin | ToxExpress">
+<meta name="twitter:description" content="Create tracking codes, assign shipment weights, and control hold status from one integrated command console.">
+<link rel="stylesheet" href="assets/core.css">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+
+<nav>
+<h1>TRANSMOBILIS X</h1>
+<div>
+<a href="index.html">Dashboard</a>
+<a href="globe.html">Globe</a>
+<a href="fleet.html">Fleet</a>
+<a href="ports.html">Ports</a>
+<a href="shipment.html">Shipments</a>
+</div>
+</nav>
+
+<section>
+<div class="admin-head">
+<h2 class="section-title">Operations Admin Console</h2>
+<p class="large-text">Create and govern shipment records from one control point. Tracking code generation, weight declaration, hold management, and status routing are synchronized across the platform.</p>
+</div>
+
+<div class="grid-4 admin-kpi">
+<div class="card"><h3>Total Shipments</h3><p id="admin-kpi-total">0</p></div>
+<div class="card"><h3>In Transit</h3><p id="admin-kpi-transit">0</p></div>
+<div class="card"><h3>On Hold</h3><p id="admin-kpi-hold">0</p></div>
+<div class="card"><h3>Total Weight (kg)</h3><p id="admin-kpi-weight">0</p></div>
+</div>
+
+<div class="admin-layout">
+<div class="admin-form card">
+<div class="form-header">
+<h3>Create Shipment Record</h3>
+<button id="generate-code-btn" type="button" class="btn btn-ghost">Generate Tracking Code</button>
+</div>
+<form id="shipment-form">
+<div class="form-grid">
+<div class="field">
+<label for="trackingCode">Tracking Code</label>
+<input id="trackingCode" name="trackingCode" type="text" readonly required>
+</div>
+<div class="field">
+<label for="productName">Product Name</label>
+<input id="productName" name="productName" type="text" placeholder="Industrial Sensor Batch" required>
+</div>
+<div class="field">
+<label for="recipient">Recipient / Client</label>
+<input id="recipient" name="recipient" type="text" placeholder="Atlas Freight Group" required>
+</div>
+<div class="field">
+<label for="weightKg">Weight (kg)</label>
+<input id="weightKg" name="weightKg" type="number" min="0.1" step="0.1" placeholder="850.0" required>
+</div>
+<div class="field">
+<label for="origin">Origin</label>
+<input id="origin" name="origin" type="text" placeholder="Singapore" required>
+</div>
+<div class="field">
+<label for="destination">Destination</label>
+<input id="destination" name="destination" type="text" placeholder="Rotterdam" required>
+</div>
+<div class="field">
+<label for="priority">Priority</label>
+<select id="priority" name="priority">
+<option value="Standard">Standard</option>
+<option value="Priority">Priority</option>
+<option value="Critical">Critical</option>
+</select>
+</div>
+<div class="field">
+<label for="status">Initial Status</label>
+<select id="status" name="status">
+<option value="In Transit">In Transit</option>
+<option value="Processing">Processing</option>
+<option value="Delivered">Delivered</option>
+<option value="On Hold">On Hold</option>
+</select>
+</div>
+</div>
+<div class="form-actions">
+<button type="submit" class="btn btn-primary">Create Shipment</button>
+<span id="form-message" aria-live="polite"></span>
+</div>
+</form>
+</div>
+
+<div class="admin-table card">
+<div class="table-head">
+<h3>Tracking Governance</h3>
+<input id="search-input" type="search" placeholder="Search code, product, route, client...">
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Tracking</th>
+<th>Route</th>
+<th>Product</th>
+<th>Client</th>
+<th>Weight</th>
+<th>Priority</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="admin-table-body"></tbody>
+</table>
+</div>
+<p id="admin-empty" class="muted" style="display:none;">No shipments yet. Create a shipment record to begin tracking.</p>
+</div>
+</div>
+</section>
+
+<script src="assets/admin.js"></script>
+</body>
+</html>

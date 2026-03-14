@@ -26,6 +26,8 @@
 <a href="index.html">Dashboard</a>
 <a href="globe.html">Globe</a>
 <a href="fleet.html">Fleet</a>
+<a href="ports.html">Ports</a>
+<a href="admin.html">Admin</a>
 </div>
 </nav>
 
@@ -33,10 +35,31 @@
 <h2 class="section-title">Shipment Intelligence Engine</h2>
 
 <div class="grid-4">
-<div class="card"><h3>On-Time Deliveries</h3><p>98.4%</p></div>
-<div class="card"><h3>Delayed Routes</h3><p>1.2%</p></div>
-<div class="card"><h3>AI Re-Routes Today</h3><p>482</p></div>
-<div class="card"><h3>Global Risk Index</h3><p>Low</p></div>
+<div class="card"><h3>Total Shipments</h3><p id="kpi-total">0</p></div>
+<div class="card"><h3>In Transit</h3><p id="kpi-transit">0</p></div>
+<div class="card"><h3>On Hold</h3><p id="kpi-hold">0</p></div>
+<div class="card"><h3>Total Weight (kg)</h3><p id="kpi-weight">0</p></div>
+</div>
+
+<div class="card" style="margin-top:50px;padding:40px;">
+<h3 style="margin-bottom:20px;color:#7dd3fc;font-size:18px;">Live Shipment Feed</h3>
+<div style="overflow:auto;">
+<table style="width:100%;border-collapse:collapse;min-width:800px;">
+<thead>
+<tr style="text-align:left;border-bottom:1px solid rgba(0,229,255,0.2);">
+<th style="padding:14px 10px;">Tracking Code</th>
+<th style="padding:14px 10px;">Route</th>
+<th style="padding:14px 10px;">Product</th>
+<th style="padding:14px 10px;">Weight</th>
+<th style="padding:14px 10px;">Priority</th>
+<th style="padding:14px 10px;">Status</th>
+<th style="padding:14px 10px;">Created</th>
+</tr>
+</thead>
+<tbody id="shipment-live-body"></tbody>
+</table>
+</div>
+<p id="shipment-empty" style="display:none;color:#94a3b8;margin-top:16px;">No shipments found yet. Create the first one from the Admin page.</p>
 </div>
 
 </section>
